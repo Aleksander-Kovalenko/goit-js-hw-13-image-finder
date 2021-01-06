@@ -1,17 +1,19 @@
 export default class ImagesServer {
   constructor() {
-    this.BASE_URL = 'https://pixabay.com/api/';
-    this.API_KEY = '19724495-11683e473f3bf588d4ff86f50';
     this.page = 1;
     this.searchQuery = '';
   }
-  onFetchArticles(searchQuery) {
-    fetch(
-      `${this.BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${this.API_KEY}`,
-    )
+  onFetchArticles() {
+    const BASE_URL = 'https://pixabay.com/api/';
+    const API_KEY = '19724495-11683e473f3bf588d4ff86f50';
+    const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
+    // this.searchQuery = '';
+    console.log('search', this.searchQuery);
+    fetch(url)
       .then(response => response.json())
       .then(date => {
         this.incrementPage();
+        return date.hits;
       });
   }
   incrementPage() {
@@ -20,7 +22,7 @@ export default class ImagesServer {
   get query() {
     return this.searchQuery;
   }
-  set query(newSearch) {
-    this.searchQuery = newSearch;
+  set query(newQuery) {
+    this.searchQuery = newQuery;
   }
 }

@@ -1,4 +1,4 @@
-// import './css/common.css';
+import './css/common.css';
 
 import ImagesServer from './apiService.js';
 import getRefs from './referentsHTML.js';
@@ -12,6 +12,7 @@ refs.submit.addEventListener('click', onLoadMore);
 function onSearch(e) {
   e.preventDefault();
 
+  API.query = e.currentTarget.elements.query.value;
   API.onFetchArticles();
 }
 
