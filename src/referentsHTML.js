@@ -4,5 +4,6 @@ export default function getRefs() {
     cardList: document.querySelector('.gallery'),
     query: document.querySelector('.search-query'),
     submit: document.querySelector('.btn'),
+    height: document.documentElement.clientHeight,
   };
 }

@@ -7,9 +7,7 @@ export default class ImagesServer {
     const BASE_URL = 'https://pixabay.com/api/';
     const API_KEY = '19724495-11683e473f3bf588d4ff86f50';
     const url = `${BASE_URL}/?image_type=photo&orientation=horizontal&q=${this.searchQuery}&page=${this.page}&per_page=12&key=${API_KEY}`;
-    // this.searchQuery = '';
-    console.log('search', this.searchQuery);
-    fetch(url)
+    return fetch(url)
       .then(response => response.json())
       .then(date => {
         this.incrementPage();
