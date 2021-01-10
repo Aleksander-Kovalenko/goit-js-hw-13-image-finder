@@ -1,0 +1,1 @@
+.search-form{margin-top:30px}.search-form,button{display:flex;justify-content:center}.title-text{display:inline}.gallery{display:flex;flex-wrap:wrap;justify-content:center;margin-top:40px}.photo-card:not(:last-child){margin-right:30px;margin-bottom:30px}.photo-card{cursor:pointer;list-style:none}.button.is-hidden,.button>.spinner.is-hidden{display:none}
