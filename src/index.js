@@ -32,13 +32,19 @@ function onSearch(e) {
 
   API.query = e.currentTarget.elements.query.value;
   if (API.query === '') {
-    return alert('Напиши мне и я куплю тебе клавиатуру');
+    return info({
+      text: 'Напиши мне и я куплю тебе клавиатуру',
+      delay: 3000,
+    });
   }
 
   onClearRender();
   API.onFetchArticles().then(resp => {
     if (resp.length === 0) {
-      return alert('Шерлок Холмc видимо с меня не получиться. Извините');
+      return error({
+        text: 'Шерлок Холмc видимо с меня не получиться. Извините',
+        delay: 3000,
+      });
     }
     refs.cardList.insertAdjacentHTML('beforeend', card(resp));
     loadMoreBtn.show();
