@@ -1,11 +1,12 @@
 import './css/common.css';
 
+// basicLightbox
+import onClickFullImg from './modalWindow.js';
+
+// NOTIFYCATION
 import '@pnotify/core/dist/BrightTheme.css';
 import '@pnotify/core/dist/PNotify.css';
 import { info, error } from '@pnotify/core';
-
-// LODASH
-import { debounce } from 'debounce';
 
 // BOOTSTRAP
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -24,6 +25,7 @@ const loadMoreBtn = new LoadMoreBtn({
   hidden: true,
 });
 
+refs.cardList.addEventListener('click', onClickFullImg);
 refs.form.addEventListener('submit', onSearch);
 loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
 
@@ -64,10 +66,4 @@ function onLoadMore() {
 
 function onClearRender() {
   refs.cardList.innerHTML = '';
-}
-
-function onLoadScroll() {
-  let delay = 0;
-  window.scrollY(delay);
-  delay += 500;
 }

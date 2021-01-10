@@ -50,6 +50,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.6.0",
+    "basiclightbox": "^5.0.3",
     "bootstrap": "^5.0.0-beta1",
     "core-js": "^3.6.5",
     "debounce": "^1.2.0",
