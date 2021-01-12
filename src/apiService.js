@@ -17,6 +17,10 @@ export default class ImagesServer {
   incrementPage() {
     this.page += 1;
   }
+
+  newQuery() {
+    this.page = 1;
+  }
   get query() {
     return this.searchQuery;
   }

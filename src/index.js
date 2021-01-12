@@ -32,6 +32,8 @@ loadMoreBtn.refs.button.addEventListener('click', onLoadMore);
 function onSearch(e) {
   e.preventDefault();
 
+  API.newQuery();
+  console.log(API.page);
   API.query = e.currentTarget.elements.query.value;
   if (API.query === '') {
     return info({
@@ -47,20 +49,22 @@ function onSearch(e) {
         text: 'Шерлок Холмc видимо с меня не получиться. Извините',
         delay: 3000,
       });
+    } else if (resp.length >= 12) {
+      loadMoreBtn.show();
     }
     refs.cardList.insertAdjacentHTML('beforeend', card(resp));
-    loadMoreBtn.show();
   });
 }
 
 function onLoadMore() {
-  let currentHeight = refs.height + pageYOffset;
-  window.scrollBy(0, currentHeight);
-  loadMoreBtn.disable();
-
   API.onFetchArticles().then(resp => {
-    loadMoreBtn.enable();
-    refs.cardList.insertAdjacentHTML('beforeend', card(resp));
+    if (resp.length >= 12) {
+      window.scrollTo({ top: refs.height, behavior: 'smooth' });
+      loadMoreBtn.enable();
+      return refs.cardList.insertAdjacentHTML('beforeend', card(resp));
+    }
+    loadMoreBtn.hide();
+    return refs.cardList.insertAdjacentHTML('beforeend', card(resp));
   });
 }
 
