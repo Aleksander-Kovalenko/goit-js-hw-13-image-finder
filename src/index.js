@@ -58,13 +58,12 @@ function onSearch(e) {
 
 function onLoadMore() {
   API.onFetchArticles().then(resp => {
+    downScroll += refs.height + 742;
+    refs.cardList.insertAdjacentHTML('beforeend', card(resp));
     if (resp.length >= 12) {
-      window.scrollTo({ top: refs.height, behavior: 'smooth' });
       loadMoreBtn.enable();
-      return refs.cardList.insertAdjacentHTML('beforeend', card(resp));
+      window.scrollTo({ top: downScroll, behavior: 'smooth' });
     }
-    loadMoreBtn.hide();
-    return refs.cardList.insertAdjacentHTML('beforeend', card(resp));
   });
 }
 
