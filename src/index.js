@@ -58,7 +58,7 @@ function onSearch(e) {
 
 function onLoadMore() {
   API.onFetchArticles().then(resp => {
-    downScroll += refs.height + 742;
+    let downScroll = refs.height + 742;
     refs.cardList.insertAdjacentHTML('beforeend', card(resp));
     if (resp.length >= 12) {
       loadMoreBtn.enable();
