@@ -1,6 +1,7 @@
 import './sass/main.scss';
 const Handlebars = require('handlebars');
 import cards from './templates/cards.hbs';
+const debounce = require('lodash.debounce');
 
 import GetFetch from './js/apiService.js';
 import getRefs from './js/getRef.js';
@@ -25,7 +26,7 @@ function render(list) {
   refs.gallery.insertAdjacentHTML('beforeend', card.join(''));
 }
 
-window.addEventListener('scroll', scrollHandler);
+window.addEventListener('scroll', debounce(scrollHandler, 1000));
 
 function isScrollToBottom() {
   return window.innerHeight + window.scrollY >= document.body.offsetHeight;
@@ -35,15 +36,3 @@ function scrollHandler() {
 
   API.getImage().then(render);
 }
-// const observer = new IntersectionObserver(observerHandler, {
-//   threshold: 0,
-// });
-
-// observer.observe(refs.anchor);
-
-// function observerHandler([entries], observerRef) {
-//   if (!entries.isIntersecting) return;
-//   API.newQuery(query);
-//   API.getImage().then(render);
-// }
-// window.addEventListener('scroll', observerHandler);
