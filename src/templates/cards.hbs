@@ -1,28 +1,28 @@
 {{#each this}}
-<li>
-  <article class='photo-card'>
-    <img src='' alt='' />
-    <ul class='stats'>
-      <li class='stats-item'>
-        <i class='material-icons'>thumb_up</i>
-        {{}}
-      </li>
+  <li class='column'>
+    <article class='photo-card'>
+      <img class='item-image' src={{src.medium}} alt='' />
+      <ul class='stats'>
+        <li class='stats-item'>
+          <i class='material-icons'>thumb_up</i>
+          {{photographer}}
+        </li>
 
-      <li class='stats-item'>
-        <i class='material-icons'>visibility</i>
-        {{}}
-      </li>
+        <li class='stats-item'>
+          <i class='material-icons'>visibility</i>
+          {{width}}
+        </li>
 
-      <li class='stats-item'>
-        <i class='material-icons'>comment</i>
-        {{}}
-      </li>
+        <li class='stats-item'>
+          <i class='material-icons'>comment</i>
+          {{id}}
+        </li>
 
-      <li class='stats-item'>
-        <i class='material-icons'>cloud_download</i>
-        {{}}
-      </li>
-    </ul>
-  </article>
-</li>
+        <li class='stats-item'>
+          <i class='material-icons'>cloud_download</i>
+          {{height}}
+        </li>
+      </ul>
+    </article>
+  </li>
 {{/each}}
