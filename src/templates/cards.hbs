@@ -1,26 +1,26 @@
 {{#each this}}
   <li class='column'>
     <article class='photo-card'>
-      <img class='item-image' src={{src.medium}} alt='' />
+      <img class='item-image' src={{webformatURL}} alt={{tags}} />
       <ul class='stats'>
         <li class='stats-item'>
           <i class='material-icons'>thumb_up</i>
-          {{photographer}}
+          {{likes}}
         </li>
 
         <li class='stats-item'>
           <i class='material-icons'>visibility</i>
-          {{width}}
+          {{views}}
         </li>
 
         <li class='stats-item'>
           <i class='material-icons'>comment</i>
-          {{id}}
+          {{comments}}
         </li>
 
         <li class='stats-item'>
           <i class='material-icons'>cloud_download</i>
-          {{height}}
+          {{downloads}}
         </li>
       </ul>
     </article>

@@ -4,6 +4,7 @@ function getRefs() {
     gallery: document.querySelector('.js-gallery'),
     input: document.querySelector('.js-input'),
     submitForm: document.querySelector('.js-button'),
+    anchor: document.querySelector('.js-anchor'),
   };
 }
 
