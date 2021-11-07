@@ -1,27 +1,34 @@
 {{#each this}}
   <li class='column'>
-    <article class='photo-card'>
-      <img class='item-image' src={{webformatURL}} alt={{tags}} data-source={{webformatURL}} />
-      <ul class='stats'>
-        <li class='stats-item'>
-          <i class='material-icons'>thumb_up</i>
-          {{likes}}
-        </li>
+    <article class='photo-card container'>
+      <img
+        class='item-image image'
+        src={{webformatURL}}
+        alt={{tags}}
+        data-source={{webformatURL}}
+      />
+      <ul class='stats content middle'>
+        <div class='wrapper'>
+          <li class='stats-item'>
+            <i class='material-icons'>thumb_up</i>
+            {{likes}}
+          </li>
 
-        <li class='stats-item'>
-          <i class='material-icons'>visibility</i>
-          {{views}}
-        </li>
+          <li class='stats-item'>
+            <i class='material-icons'>visibility</i>
+            {{views}}
+          </li>
 
-        <li class='stats-item'>
-          <i class='material-icons'>comment</i>
-          {{comments}}
-        </li>
+          <li class='stats-item'>
+            <i class='material-icons'>comment</i>
+            {{comments}}
+          </li>
 
-        <li class='stats-item'>
-          <i class='material-icons'>cloud_download</i>
-          {{downloads}}
-        </li>
+          <li class='stats-item'>
+            <i class='material-icons'>cloud_download</i>
+            {{downloads}}
+          </li>
+        </div>
       </ul>
     </article>
   </li>
