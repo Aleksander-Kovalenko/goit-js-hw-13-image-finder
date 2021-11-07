@@ -26,13 +26,14 @@ function render(list) {
   refs.gallery.insertAdjacentHTML('beforeend', card.join(''));
 }
 
-window.addEventListener('scroll', debounce(scrollHandler, 1000));
+const observer = new IntersectionObserver(observerHandler, {
+  threshold: 0,
+});
 
-function isScrollToBottom() {
-  return window.innerHeight + window.scrollY >= document.body.offsetHeight;
-}
-function scrollHandler() {
-  if (!isScrollToBottom) return;
+observer.observe(refs.anchor);
+
+function observerHandler(entries) {
+  if (!entries.isIntersecting && !query) return;
 
   API.getImage().then(render);
 }
