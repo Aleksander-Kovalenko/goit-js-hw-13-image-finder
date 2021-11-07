@@ -3,22 +3,25 @@ const Handlebars = require('handlebars');
 import cards from './templates/cards.hbs';
 const debounce = require('lodash.debounce');
 
-import GetFetch from './js/apiService.js';
-import getRefs from './js/getRef.js';
+import './js/modal-window';
+import GetFetch from './js/apiService';
+import getRefs from './js/getRef';
 
 const refs = getRefs();
 const API = new GetFetch();
-let query = '';
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
 
-  query = e.currentTarget.elements.query.value;
-  if (!query.trim()) return;
-  refs.gallery.innerHTML = '';
+  API.newQuery = e.currentTarget.elements.query.value;
+  if (!API.newQuery.trim()) return;
+
+  clearList();
+
   API.resetPage();
-  API.newQuery(query);
-  API.getImage().then(render);
+  // API.newQuery(query);
+  // API.getImage().then(render);
+  observer.observe(refs.anchor);
 });
 
 function render(list) {
@@ -26,14 +29,18 @@ function render(list) {
   refs.gallery.insertAdjacentHTML('beforeend', card.join(''));
 }
 
+function clearList() {
+  refs.gallery.innerHTML = '';
+}
+
 const observer = new IntersectionObserver(observerHandler, {
-  threshold: 0,
+  rootMargin: '160px',
 });
 
-observer.observe(refs.anchor);
+// observer.observe(refs.anchor);
 
-function observerHandler(entries) {
-  if (!entries.isIntersecting && !query) return;
-
-  API.getImage().then(render);
+function observerHandler([entries]) {
+  if (entries.isIntersecting && API.newQuery) {
+    API.getImage().then(render);
+  }
 }

@@ -5,6 +5,8 @@ function getRefs() {
     input: document.querySelector('.js-input'),
     submitForm: document.querySelector('.js-button'),
     anchor: document.querySelector('.js-anchor'),
+    lightbox: document.querySelector('.js-lightbox'),
+    image: document.querySelector('.lightbox__image'),
   };
 }
 

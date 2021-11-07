@@ -51,8 +51,10 @@ export default class getImage {
   resetPage() {
     this.page = 1;
   }
-
-  newQuery(searchImage) {
+  get newQuery() {
+    return this.query;
+  }
+  set newQuery(searchImage) {
     this.query = searchImage;
   }
 }
