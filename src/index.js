@@ -17,11 +17,10 @@ refs.form.addEventListener('submit', e => {
   if (!API.newQuery.trim()) return;
 
   clearList();
+  API.getImage().then(render);
 
   API.resetPage();
-  // API.newQuery(query);
-  // API.getImage().then(render);
-  observer.observe(refs.anchor);
+  // observer.observe(refs.anchor);
 });
 
 function render(list) {
@@ -37,7 +36,7 @@ const observer = new IntersectionObserver(observerHandler, {
   rootMargin: '160px',
 });
 
-// observer.observe(refs.anchor);
+observer.observe(refs.anchor);
 
 function observerHandler([entries]) {
   if (entries.isIntersecting && API.newQuery) {
